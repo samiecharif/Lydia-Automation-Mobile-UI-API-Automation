@@ -1,18 +1,16 @@
-import { $, $$, driver } from '@wdio/globals';
+import { $, browser } from "@wdio/globals";
 
 class PopupPage {
 
-    get closeButton() {
+    get negativeBtn() {
         return $('id=org.wikipedia.alpha:id/negativeButton');
     }
 
     async closeIfVisible() {
-        try {
-            if (await this.closeButton.isDisplayed()) {
-                await this.closeButton.click();
-                await driver.pause(300);
-            }
-        } catch {}
+        if (await this.negativeBtn.isDisplayed().catch(() => false)) {
+            await this.negativeBtn.click();
+            await browser.pause(300);
+        }
     }
 }
 

@@ -1,22 +1,20 @@
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const client = axios.create({
     baseURL: "https://reqres.in/api",
-    adapter: "http", 
     headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "x-api-key": process.env.REQRES_API_KEY || ""
     }
 });
 
-class ApiClient {
-    async createUser(data: any) {
-        return client.post("/users", data);
-    }
+export default {
+    createUser: (payload: any) =>
+        client.post("/users", payload),
 
-    async getUser(id: number) {
-        return client.get(`/users/${id}`);
-    }
-}
-
-export default new ApiClient();
+    getUser: (id: number) =>
+        client.get(`/users/${id}`)
+};

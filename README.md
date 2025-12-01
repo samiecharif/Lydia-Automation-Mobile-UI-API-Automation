@@ -13,6 +13,36 @@ Ce projet inclut :
 - Deux rapports HTML distincts (UI et API)
 - Architecture maintenable et prête pour une CI
 
+# Structure du projet
+lydia-automation/
+│
+├── mobile/
+│   ├── apps/                         # APK fourni
+│   ├── features/                     # Scénarios Gherkin
+│   ├── pages/                        # Page Object Model
+│   ├── steps/                        # Step Definitions
+│   └── utils/                        # Gestures, helpers
+│
+├── api/
+│   ├── config/apiClient.ts           # Client Axios centralisé
+│   ├── tests/reqres.spec.ts          # Tests Mocha
+│   └── helpers/                      # Helpers API (si besoin)
+│
+├── reports/
+│   ├── ui/                           # Rapport HTML Allure (UI)
+│   └── api/                          # Rapport HTML Allure (API)
+│
+├── allure-results/                   # Résultats bruts UI (ignore Git)
+├── allure-results-api/               # Résultats bruts API (ignore Git)
+│
+├── wdio.conf.ts                      # Configuration Mobile
+├── tsconfig.mobile.json              # TS Mobile
+├── tsconfig.api.json                 # TS API
+├── tsconfig.json                     # extension
+├──package.json                      
+└── README.md
+
+
 #  PARTIE 1 — Tests Mobile UI
 # Scénario automatisé
 
@@ -132,3 +162,5 @@ lydia-automation/
 - TypeScript sur les deux frameworks
 
   
+### IMPORTANT
+L’API ReqRes ayant récemment restreint ses endpoints (401 systématiques même avec API key), l’API publique JSONPlaceholder a été utilisée pour la partie API. Cela reste conforme au test technique : POST + GET + assertions + rapport.

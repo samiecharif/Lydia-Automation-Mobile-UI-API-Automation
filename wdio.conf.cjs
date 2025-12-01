@@ -22,13 +22,13 @@ exports.config = {
 
         // IMPORTANT : On force bien l'activité onboarding
         'appium:appPackage': 'org.wikipedia.alpha',
-        'appium:appActivity': 'org.wikipedia.onboarding.InitialOnboardingActivity',
+        'appium:appActivity': 'org.wikipedia.main.MainActivity' ,
         'appium:appWaitActivity': '*.*',
         'appium:appWaitDuration': 30000,
 
-        'appium:autoGrantPermissions': true,
         'appium:noReset': false,
         'appium:fullReset': false,
+        'appium:dontStopAppOnReset': false,
     }],
 
     logLevel: 'info',

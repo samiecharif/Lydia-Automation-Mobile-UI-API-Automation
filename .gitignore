@@ -16,9 +16,7 @@ appium.log
 # Reports (UI + API)
 # ==========================
 allure-results/
-allure-report/
-reports/
-coverage/
+allure-results-api/
 
 # ==========================
 # Logs

@@ -1,30 +1,32 @@
-import { $, $$, driver } from '@wdio/globals';
+import { $, browser } from "@wdio/globals";
 
 class LanguagePage {
 
-    get moreOptions() {
+    get menuBtn() {
         return $('~More options');
     }
 
-    get settingsButton() {
-        return $('xpath=//android.widget.TextView[@text="Settings"]');
+    get languagesBtn() {
+        return $('//*[@text="Languages"]');
     }
 
-    get appLanguage() {
-        return $('xpath=//android.widget.TextView[@text="Wikipedia languages"]');
+    get addLanguageBtn() {
+        return $('id=org.wikipedia.alpha:id/addLanguageButton');
     }
 
     get frenchOption() {
-        return $('xpath=//android.widget.TextView[@text="Français"]');
+        return $('//*[@text="Français"]');
     }
 
     async changeToFrench() {
-        await this.moreOptions.click();
-        await this.settingsButton.click();
-        await this.appLanguage.click();
+        await this.menuBtn.waitForDisplayed({ timeout: 5000 });
+        await this.menuBtn.click();
+
+        await this.languagesBtn.click();
+        await this.addLanguageBtn.click();
 
         await this.frenchOption.click();
-        await driver.pause(800);
+        await browser.pause(500);
     }
 }
 

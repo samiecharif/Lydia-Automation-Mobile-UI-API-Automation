@@ -10,7 +10,8 @@
     "allure:open": "allure open",
     "report:ui": "allure generate allure-results --clean -o reports/ui",
     "test:api": "tsx node_modules/mocha/bin/mocha.js api/tests/**/*.ts",
-    "report:api": "allure generate allure-results-api --clean && allure open -o reports/api"
+    "report:api": "allure generate allure-results --clean -o reports/api && allure open reports/api"    
+
   },
   "keywords": [
     "webdriverio",
@@ -46,6 +47,7 @@
   },
   "dependencies": {
     "axios": "^1.6.7",
+    "dotenv": "^17.2.3",
     "webdriverio": "^8.39.0"
   }
 }

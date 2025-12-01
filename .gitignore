@@ -1,0 +1,41 @@
+# ==========================
+# Node & TypeScript
+# ==========================
+node_modules/
+dist/
+dist-api/
+*.tsbuildinfo
+
+# ==========================
+# Mobile / Appium
+# ==========================
+mobile/apps/*.apk
+appium.log
+
+# ==========================
+# Reports (UI + API)
+# ==========================
+allure-results/
+allure-report/
+reports/
+coverage/
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# ==========================
+# Environment files
+# ==========================
+.env
+.env.local
+.env.*.local
+
+# ==========================
+# IDE / System
+# ==========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

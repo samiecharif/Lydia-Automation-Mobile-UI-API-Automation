@@ -6,11 +6,11 @@
   "main": "wdio.conf.js",
   "scripts": {
     "test": "npx wdio run wdio.conf.cjs",
-    "allure:generate": "allure generate allure-results --clean",
+    "allure:generate": "allure generate allure-results --clean -o reports/ui",
     "allure:open": "allure open",
-    "report": "allure generate allure-results --clean && allure open",
+    "report:ui": "allure generate allure-results --clean -o reports/ui",
     "test:api": "tsx node_modules/mocha/bin/mocha.js api/tests/**/*.ts",
-    "report:api": "allure generate allure-results-api --clean && allure open"
+    "report:api": "allure generate allure-results-api --clean && allure open -o reports/api"
   },
   "keywords": [
     "webdriverio",

@@ -1,5 +1,11 @@
 # Lydia Automation — Framework de Tests Mobile UI & API
 
+# Objectif du test technique
+
+Ce projet répond au test demandé :
+
+Créer un framework d’automatisation complet (Mobile UI + API)
+avec Page Object Model, Gherkin, TypeScript et deux rapports HTML séparés.
 Ce projet inclut :
 
 - Tests Mobile UI (WebdriverIO + Appium + Cucumber + POM)
@@ -37,28 +43,19 @@ mobile/
 ├── steps/          # Définition des steps Cucumber
 └── utils/          # Fonctions utilitaires
 
-# Lancer les tests Mobile
-npm run test
+# Lancer les tests Mobile UI
+
+# Installer les dépendances
+npm install
+
+# Lancer les tests Appium + WebdriverIO
+npm test
 
 # Générer le rapport HTML Mobile
 npm run report
 
-Le rapport Allure s’ouvrira automatiquement.
 
 # PARTIE 2 — Tests API
-# Scénario automatisé
-
-| Méthode  | Endpoint     | Description                   |
-| -------- | ------------ | ----------------------------- |
-| **POST** | `/users`     | Création d'un utilisateur     |
-| **GET**  | `/users/:id` | Récupération d’un utilisateur |
-
-Assertions implémentées :
-
-- Code HTTP
-- Validation du corps JSON
-- Types des champs
-- Conditions (existence, non nullité…)
 
  # Stack technique
 
@@ -68,13 +65,22 @@ Assertions implémentées :
 -TypeScript
 -Rapport Allure API
 
+# Endpoints automatisés (ReqRes API)
+
+  POST /users – Création d’un utilisateur
+  GET /users/2 – Récupération d’un utilisateur existant
+
+Les tests incluent :
+-Status codes
+-Validation du corps de réponse
+-Vérification stricte des champs
+
 # Structure du projet API
 
 api/
-│
-├── config/      # Client axios, URLs, helpers
-├── helpers/     # Fonctions utilitaires API
-└── tests/       # Tests Mocha/Chai en TypeScript
+  config/apiClient.ts        → Wrapper axios
+  tests/reqres.spec.ts       → Tests GET + POST
+
 
 # Lancer les tests API
 npm run test:api
@@ -82,24 +88,28 @@ npm run test:api
 # Générer le rapport API
 npm run report:api
 
-# Générer le rapport API
-npm run report:api
+# Rapports HTML (Allure)
 
-# Scripts disponibles
-| Script               | Description            |
-| -------------------- | ---------------------- |
-| `npm run test`       | Exécuter les tests UI  |
-| `npm run report`     | Générer le rapport UI  |
-| `npm run test:api`   | Exécuter les tests API |
-| `npm run report:api` | Générer le rapport API |
+Deux rapports séparés :
+| Partie | Commande             | Dossier       |
+| ------ | -------------------- | ------------- |
+| UI     | `npm run report`     | `reports/ui`  |
+| API    | `npm run report:api` | `reports/api` |
 
-# Installation de l’environnement
-# Prérequis
--Node.js 18+
--Java JDK
--Android SDK + ADB
--Appium 2.x
--Un émulateur Android actif
+# Scripts utiles
+
+"test": "npx wdio run wdio.conf.js",
+"test:api": "tsx node_modules/mocha/bin/mocha.js api/tests/**/*.ts",
+"report": "allure generate allure-results --clean && allure open",
+"report:api": "allure generate allure-results-api --clean && allure open"
+
+# gitignore inclus
+-node_modules
+-APK
+-Allure results
+-dist / build
+-Logs Appium
+-Fichiers système
 
 # Organisation du dépôt
 

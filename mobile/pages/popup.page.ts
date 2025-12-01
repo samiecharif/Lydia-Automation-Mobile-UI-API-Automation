@@ -1,19 +1,18 @@
-import { ChainablePromiseElement } from 'webdriverio';
+import { $, $$, driver } from '@wdio/globals';
 
 class PopupPage {
+
     get closeButton() {
-        return $('id=org.wikipedia.alpha:id/view_announcement_close_button');
+        return $('id=org.wikipedia.alpha:id/negativeButton');
     }
 
     async closeIfVisible() {
         try {
             if (await this.closeButton.isDisplayed()) {
                 await this.closeButton.click();
-                await driver.pause(500);
+                await driver.pause(300);
             }
-        } catch (e) {
-           
-        }
+        } catch {}
     }
 }
 

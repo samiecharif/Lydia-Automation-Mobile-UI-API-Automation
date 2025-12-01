@@ -1,22 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "strict": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
+  "extends": "./tsconfig.json",
 
+  "compilerOptions": {
     "types": [
       "node",
       "@wdio/globals/types",
-      "@wdio/cucumber-framework"
-    ],
-
-    "baseUrl": "./",
-    "resolveJsonModule": true,
-    "allowJs": true
+      "@wdio/cucumber-framework",
+      "@wdio/appium-service",
+      "webdriverio"
+    ]
   },
 
-  "include": ["mobile/**/*.ts"]
+  "include": ["mobile/**/*.ts", "wdio.conf.js"]
 }

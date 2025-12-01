@@ -1,14 +1,30 @@
+import { $, $$, driver } from '@wdio/globals';
+
 class LanguagePage {
-    get menuBtn() { return $('~More'); }
-    get settingsBtn() { return $('id=preference_title'); }
-    get languageBtn() { return $('android=new UiSelector().text("Wikipedia language")'); }
-    get frenchOption() { return $('android=new UiSelector().text("Français")'); }
+
+    get moreOptions() {
+        return $('~More options');
+    }
+
+    get settingsButton() {
+        return $('xpath=//android.widget.TextView[@text="Settings"]');
+    }
+
+    get appLanguage() {
+        return $('xpath=//android.widget.TextView[@text="Wikipedia languages"]');
+    }
+
+    get frenchOption() {
+        return $('xpath=//android.widget.TextView[@text="Français"]');
+    }
 
     async changeToFrench() {
-        await this.menuBtn.click();
-        await this.settingsBtn.click();
-        await this.languageBtn.click();
+        await this.moreOptions.click();
+        await this.settingsButton.click();
+        await this.appLanguage.click();
+
         await this.frenchOption.click();
+        await driver.pause(800);
     }
 }
 

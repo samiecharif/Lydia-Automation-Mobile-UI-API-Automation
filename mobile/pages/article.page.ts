@@ -1,22 +1,22 @@
-import Gestures from '../utils/gestures';
+import { $, $$, driver } from '@wdio/globals';
 
 class ArticlePage {
 
-    get cresusLink() {
-        return $('android=new UiSelector().text("Crésus")');
-    }
-
     async scrollToBottom() {
-        
-        for (let i = 0; i < 7; i++) {
-            await Gestures.swipeUp();
-            await browser.pause(500);
-        }
+        await driver.touchPerform([
+            { action: 'press', options: { x: 500, y: 1600 }},
+            { action: 'wait', options: { ms: 300 }},
+            { action: 'moveTo', options: { x: 500, y: 200 }},
+            { action: 'release' }
+        ]);
+
+        await driver.pause(800);
     }
 
-    async openArticle() {
-        await this.cresusLink.waitForDisplayed({ timeout: 10000 });
-        await this.cresusLink.click();
+    async openArticle(article: string) {
+        const selector = `android=new UiSelector().text("${article}")`;
+        const element = await $(selector);
+        await element.click();
     }
 }
 

@@ -5,7 +5,7 @@
   "description": "Mobile UI automation test for Lydia using WebdriverIO, Appium, Cucumber and TypeScript, API tests",
   "main": "wdio.conf.js",
   "scripts": {
-    "test": "npx wdio run wdio.conf.js",
+    "test": "npx wdio run wdio.conf.cjs",
     "allure:generate": "allure generate allure-results --clean",
     "allure:open": "allure open",
     "report": "allure generate allure-results --clean && allure open",
@@ -32,7 +32,7 @@
     "@wdio/cucumber-framework": "^8.39.0",
     "@wdio/local-runner": "^8.39.0",
     "@wdio/spec-reporter": "^8.39.0",
-    "@wdio/types": "^8.39.0",
+    "@wdio/types": "^8.41.0",
     "@wdio/utils": "^8.39.0",
     "allure-commandline": "^2.24.0",
     "appium": "^2.6.0",

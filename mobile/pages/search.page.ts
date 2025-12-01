@@ -1,33 +1,29 @@
-import { ChainablePromiseElement } from "webdriverio";
+import { $, $$, driver } from '@wdio/globals';
 
 class SearchPage {
 
-    get searchBox() {
+    get searchTab() {
+        return $('id=org.wikipedia.alpha:id/search_container');
+    }
 
+    get searchInput() {
         return $('id=org.wikipedia.alpha:id/search_src_text');
     }
 
-    async search(text: string) {
-        await this.searchBox.waitForDisplayed({ timeout: 5000 });
-        await this.searchBox.setValue(text);
-        await driver.pause(1000);
+    async search(term: string) {
+        await this.searchTab.waitForDisplayed({ timeout: 4000 });
+        await this.searchTab.click();
+
+        await this.searchInput.setValue(term);
+        await driver.pause(800);
     }
 
     async scrollToCity(city: string) {
-        const selector =
-            `android=new UiScrollable(new UiSelector().scrollable(true))` +
-            `.scrollIntoView(new UiSelector().text("${city}"))`;
+        const selector = `android=new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("${city}"))`;
 
-        const element = await $(selector);
-
-        await element.waitForDisplayed({ timeout: 5000 });
-        await element.click();
-        await driver.pause(1000);
+        const cityElement = await $(selector);
+        await cityElement.click();
     }
-    get resultItem() {
-    return $('android=new UiSelector().resourceId("org.wikipedia.alpha:id/page_list_item_title")');
-}
-
 }
 
 export default new SearchPage();

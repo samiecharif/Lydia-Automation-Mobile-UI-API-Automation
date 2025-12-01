@@ -1,11 +1,10 @@
-Feature: Wikipedia mobile search flow
+Feature: Lydia Test – Mobile UI automation
 
-  Scenario: Search Lydia, change language, open Crésus article
+  Scenario: Full onboarding + search + language change + bottom scroll + open article
     Given I launch the app
     When I swipe through the onboarding carousel
-    And I search for "Lydia"
-    And I scroll until I see the city "Lydia"
-    And I dismiss the popup if visible
+    When I search for "Lydia"
+    And I scroll to the city "Lydia"
     And I change the language to French
     And I scroll to the bottom of the page
-    Then I click on "Crésus" and navigate to the new page
+    Then I open the article "Crésus"
